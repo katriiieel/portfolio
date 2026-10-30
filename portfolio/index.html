@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kate Nicole G. Mandigma – Portfolio</title>
+<meta name="description" content="Portfolio of Your Name, a student of Your Course.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #f8f2e2;
+    --grid: #eadfc5;
+    --ink: #1c2541;
+    --muted: #5d6075;
+    --card: #fffcf3;
+    --line: #d9ccaa;
+    --mark: #ffd84d;
+    --link: #1d3fbf;
+    --head: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+    --body: "DM Sans", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* graph-paper background, like a student notebook */
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  a { color: var(--link); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+
+  .layout {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  /* ---------- Profile column ---------- */
+  .profile { position: sticky; top: 32px; }
+  .photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--mark);
+    background: var(--card);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo .initials { font-family: var(--head); font-weight: 800; font-size: 4.5rem; color: var(--muted); }
+  h1 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 2.3rem;
+    line-height: 1.1;
+    margin: 36px 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .course { margin: 0 0 4px; font-weight: 700; }
+  .school { margin: 0 0 20px; color: var(--muted); }
+  .links { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .links a { font-weight: 500; }
+
+  /* ---------- Content ---------- */
+  main section { margin-bottom: 56px; }
+  h2 {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  main p { max-width: 62ch; margin: 0 0 14px; }
+  .hl { background: linear-gradient(transparent 55%, var(--mark) 55%); }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
+  .skills li {
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    padding: 4px 16px;
+    background: var(--card);
+    font-weight: 500;
+  }
+  .learning { margin-top: 18px; color: var(--muted); }
+
+  .projects { display: grid; gap: 20px; }
+  .project {
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .project .body { padding: 20px 24px 22px; }
+  .shot {
+    aspect-ratio: 16 / 10;
+    background: var(--grid);
+    border-bottom: 1.5px solid var(--ink);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot.empty::after {
+    content: "Add your photo here: " attr(data-file);
+    color: var(--muted);
+    padding: 0 16px;
+    text-align: center;
+  }
+  .project h3 { font-family: var(--head); font-size: 1.3rem; margin: 0 0 4px; }
+  .project .status { font-size: 0.9rem; color: var(--muted); margin: 0 0 10px; }
+  .project p { margin-bottom: 10px; }
+  .tags { font-size: 0.92rem; color: var(--muted); margin: 0; }
+
+
+  .certs { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .certs li {
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .certs strong { display: block; font-family: var(--head); font-size: 1.1rem; line-height: 1.3; }
+  .certs span { color: var(--muted); font-size: 0.95rem; }
+
+  .achievements { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .achievements li { position: relative; padding-left: 28px; max-width: 62ch; }
+  .achievements li::before {
+    content: ""; position: absolute; left: 0; top: 0.5em;
+    width: 12px; height: 12px; background: var(--mark); border: 2px solid var(--ink); border-radius: 3px;
+  }
+  .achievements strong { font-weight: 700; }
+  .achievements span { display: block; color: var(--muted); font-size: 0.95rem; }
+
+  .timeline { list-style: none; padding: 0; margin: 0; border-left: 3px solid var(--ink); }
+  .timeline li { padding: 0 0 18px 20px; position: relative; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -9px; top: 8px;
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--mark); border: 2px solid var(--ink);
+  }
+  .timeline strong { display: block; }
+  .timeline span { color: var(--muted); }
+
+  footer { color: var(--muted); font-size: 0.92rem; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 800px) {
+    .layout { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; }
+    .profile { position: static; display: grid; grid-template-columns: 140px 1fr; gap: 20px; align-items: center; }
+    .photo { box-shadow: 5px 5px 0 var(--mark); }
+    .photo .initials { font-size: 2.6rem; }
+    h1 { font-size: 1.8rem; margin-top: 0; }
+    .profile .links { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) { .certs { grid-template-columns: 1fr; } }
+  @media (max-width: 420px) {
+    .profile { grid-template-columns: 1fr; }
+    .photo { max-width: 220px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ============ PROFILE ============ -->
+  <header class="profile">
+    <div class="photo">
+      <!-- 1) Put your photo in the same folder and name it profile.jpg (or change the name below) -->
+      <img src="profile.jpg" alt="Photo of Kate Nicole G. Mandigma"
+           onerror="this.remove(); document.getElementById('fallback').hidden = false;">
+      <span id="fallback" class="initials" hidden>KN</span>
+    </div>
+    <div>
+      <!-- 2) Replace with your name, course and school -->
+      <h1>Kate Nicole G. Mandigma</h1>
+      <p class="course">BS in Computer Engineering</p>
+      <p class="school">STI College Calamba, 4th Year</p>
+      <ul class="links">
+        <li><a href="https://github.com/katriiieel">GitHub</a></li>
+        <li><a href="mailto:mandigmakate1125@gmail.com">mandigmakate1125@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/kate-nicole-mandigma-5b2993307/">LinkedIn</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ CONTENT ============ -->
+  <main>
+    <section id="about">
+  <h2>About me</h2>
+  <p>Hi, I’m Kate, a <span class="hl">4th year Computer Engineering student</span> at STI College Calamba. I’m interested in how hardware and software work together, and I enjoy figuring out how things work and how to make them work better.</p>
+  <p>I like to indulge my own niche interests and bring them into everything I build. Starting from something I truly care about keeps me curious and motivated, and it makes the work feel like mine. Some of the best things I’ve learned came from following an interest that most people wouldn’t think to connect to engineering.</p>
+  <p>I’m still learning and I like it that way. I enjoy picking up new tools, asking questions and trying things out until they work.</p>
+  <p>I’m looking for internship or entry-level opportunities where I can learn from a team, take on real work and grow as an engineer.</p>
+</section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li>Leadership</li>
+        <li>Microsoft Office</li>
+        <li>Problem solving</li>
+        <li>Time management</li>
+        <li>Adaptability</li>
+      </ul>
+      <p class="learning">Currently learning: JavaScript, HTML, CSS</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <article class="project">
+          <div class="shot" data-file="projects/project-one.jpg">
+            <img src="projects/project-one.png" alt="Photo of Project name one" onerror="this.parentNode.classList.add('empty'); this.remove();">
+          </div>
+          <div class="body">
+            <h3>Fandrop: K-Pop Freebie Tracker</h3>
+            <p class="status">Personal project · 2026</p>
+            <p>An android mobile application that helps K-Pop fans track freebie giveaways and events, currently in its closed testing phase.</p>
+            <p class="tags">Made with: JavaScript, React Native, Supabase</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="shot" data-file="projects/project-two.jpg">
+            <img src="projects/project-two.jpg" alt="Photo of Project name two" onerror="this.parentNode.classList.add('empty'); this.remove();">
+          </div>
+          <div class="body">
+            <h3>Line Following Robot</h3>
+            <p class="status">Course Project · 2026</p>
+            <p>A robot designed to follow a line on the ground, utilizing sensors and microcontrollers for navigation.</p>
+            <p class="tags">Made with: C++, IR sensors, Arduino IDE, Lafvin microcontroller</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="shot" data-file="projects/project-three.jpg">
+            <img src="projects/project-three.jpg" alt="Photo of Project name three" onerror="this.parentNode.classList.add('empty'); this.remove();">
+          </div>
+          <div class="body">
+            <h3>Rice Variety and Mixed-Batch Detection Using Microcontroller and Image Processing</h3>
+            <p class="status">Capstone Project · 2026</p>
+            <p>Together with my groupmates, we developed a device to identify different rice varieties and detect mixed batches using image processing techniques and microcontroller-based hardware. I'm involved in the planning, design, documentation, and physical implementation phases as the thesis group leader.</p>
+            <p class="tags">Made with: Solid Edge 2025, Raspberry Pi, Microsoft Office</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul class="certs">
+        <li>
+          <strong>Safety Officer 2 (BOSH SO2)</strong>
+          <span>1BESO Management Consultancy Services · 2026</span>
+        </li>
+        <li>
+          <strong>Solid Edge Associate Level Certification</strong>
+          <span>Siemens Digital Industries Software · 2026</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <ul class="achievements">
+        <li>
+          <strong>For Girls Who Build PH | Member</strong>
+          <span>For Girls Who Build PH · 2026 - Present</span>
+        </li>
+        <li>
+          <strong>OWWA OFW Dependent Scholarship Program (ODSP)</strong>
+          <span>Department of Migrant Workers Overseas Workers Welfare Administration Regional Welfare Office 4A (CALABARZON), 2025 - Present</span>
+        </li>
+        <li>
+          <strong>STI RoboQuest 2025-26 National Level Champion | Rice Variety and Mixed-Batch Detection Using Microcontroller and Image Processing</strong>
+          <span>STI College · 2026</span>
+        </li>
+        <li>
+          <strong>Neoteric Engineering eXcellence of Unified Students | President</strong>
+          <span>STI College Calamba · 2025 - 2026</span>
+        </li>
+        <li>
+          <strong>Neoteric Engineering eXcellence of Unified Students | Secretary</strong>
+          <span>STI College Calamba · 2024 - 2025</span>
+        </li>
+        <li>
+          <strong>Organization of Computer Engineering Students | First Year Representative</strong>
+          <span>STI College Calamba · 2023 - 2024</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul class="timeline">
+        <li>
+          <strong>Bachelor of Science in Computer Engineering</strong>
+          <span>STI College Calamba · 2023 - Present</span>
+        </li>
+        <li>
+          <strong>Science, Technology, Engineering, and Mathematics (STEM)</strong>
+          <span>Los Baños Senior High School · 2021 - 2023</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Want to work together or just say hi? Email me at <a href="mailto:mandigmakate1125@gmail.com">mandigmakate1125@gmail.com</a>.</p>
+    </section>
+
+    <footer>© 2026 Kate Nicole G. Mandigma</footer>
+  </main>
+
+</div>
+</body>
+</html>
